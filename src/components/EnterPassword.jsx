@@ -5,10 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import "../css/Login.css";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const styles = (theme) => ({
   textField: {
@@ -23,28 +24,23 @@ const styles = (theme) => ({
     paddingLeft: "2%",
   },
   signin: {
-    marginTop: 0,
-    paddingTop: 0,
+    margin: 0,
+    padding: 0,
   },
   email: {
     border: "grey 1px solid",
-    width: "60%",
-    maxWidth: "100%",
+    width: "max-content",
+    minWidth: "50%",
     margin: 0,
     height: "23px",
-    padding: "0% 1% 0% 1%",
-    marginTop: 0,
+    padding: 0,
+    margin: 0,
     borderRadius: "16px",
   },
-  user: {
-    margin: "0 1% 1% 0",
-    padding: "0 0 1% 0",
-  },
   title: {
-    padding: "0 0 1% 0",
-    fontSize: "100%",
-    overflow: "visible",
-    margin: "0 0 1% 0",
+    padding: "0 0 0 0",
+    fontSize: "93%",
+    margin: "0 0 0 0",
   },
   iconButton: {
     padding: 0,
@@ -57,8 +53,10 @@ class PasswordTextFields extends React.Component {
   };
 
   showPassword = () => {
-      this.state.showPassword ? this.setState({ showPassword : false}) : this.setState({ showPassword : true })
-  }
+    this.state.showPassword
+      ? this.setState({ showPassword: false })
+      : this.setState({ showPassword: true });
+  };
 
   render() {
     const { classes } = this.props;
@@ -71,12 +69,11 @@ class PasswordTextFields extends React.Component {
             container
             direction="row"
             justify="flex-start"
-            alignItems="center"
+            alignItems="baseline"
           >
-            <AccountCircleIcon className={classes.user} />
-            <Typography className={classes.title} variant="h6" noWrap>
-              {this.props.email}
-            </Typography>
+            <text className={classes.title}>
+              <AccountCircleIcon/> {this.props.email}
+            </text>
           </Grid>
         </div>
         <Grid
@@ -94,9 +91,21 @@ class PasswordTextFields extends React.Component {
             margin="normal"
             onChange={this.props.handleChange}
           />
-          <IconButton className={classes.iconButton} onClick={this.showPassword}>
-          {this.state.showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-          </IconButton>
+          <InputAdornment
+            position="end"
+            style={{ marginTop: "-18%", marginLeft: "80%" }}
+          >
+            <IconButton
+              className={classes.iconButton}
+              onClick={this.showPassword}
+            >
+              {this.state.showPassword ? (
+                <VisibilityOffIcon />
+              ) : (
+                <VisibilityIcon />
+              )}
+            </IconButton>
+          </InputAdornment>
         </Grid>
         <Grid
           container

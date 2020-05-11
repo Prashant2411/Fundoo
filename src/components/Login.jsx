@@ -4,6 +4,7 @@ import EnterEmail from "./EnterEmail";
 import EnterPassword from "./EnterPassword";
 import Grid from "@material-ui/core/Grid";
 import "../css/Login.css";
+import fundooLogo from "../images/fundooLogo.png";
 
 const styles = (theme) => ({
   container: {
@@ -44,7 +45,9 @@ class LoginForm extends React.Component {
     return (
       <div className={classes.container}>
         <Grid container direction="column" justify="center" alignItems="center">
-          <div className="loginDiv" />
+          <div className="loginDiv">
+            {/* <img src={fundooLogo} alt="FUNDOO" width="100%"/> */}
+          </div>
           {this.state.currentInput === "email" ? (
             <EnterEmail
               handleChange={this.handleChange}
