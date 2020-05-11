@@ -31,16 +31,9 @@ const styles = (theme) => ({
     border: "grey 1px solid",
     width: "max-content",
     minWidth: "50%",
-    margin: 0,
+    maxWidth: "100%",
     height: "23px",
-    padding: 0,
-    margin: 0,
     borderRadius: "16px",
-  },
-  title: {
-    padding: "0 0 0 0",
-    fontSize: "93%",
-    margin: "0 0 0 0",
   },
   iconButton: {
     padding: 0,
@@ -65,15 +58,11 @@ class PasswordTextFields extends React.Component {
       <React.Fragment>
         <h3 className={classes.signin}>WELCOME</h3>
         <div className={classes.email}>
-          <Grid
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="baseline"
-          >
-            <text className={classes.title}>
-              <AccountCircleIcon/> {this.props.email}
-            </text>
+          <Grid container direction="row" justify="center" alignItems="center">
+            <AccountCircleIcon />
+            <div>
+              <b>{this.props.email}</b>
+            </div>
           </Grid>
         </div>
         <Grid
@@ -93,7 +82,7 @@ class PasswordTextFields extends React.Component {
           />
           <InputAdornment
             position="end"
-            style={{ marginTop: "-18%", marginLeft: "80%" }}
+            style={{ marginTop: "-18%", marginLeft: "83%" }}
           >
             <IconButton
               className={classes.iconButton}
