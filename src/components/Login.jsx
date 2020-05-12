@@ -11,7 +11,7 @@ const styles = (theme) => ({
     border: "solid 1px",
     padding: "1%",
     backgroundColor: "white",
-    boxShadow: "3px 3px 5px 6px lightgray",
+    boxShadow: "3px 3px 5px 6px grey",
   },
 });
 
