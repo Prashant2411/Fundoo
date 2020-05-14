@@ -1,13 +1,15 @@
 import React from "react";
-import Login from "./components/Login"
+import Login from "./components/Login";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      {/* <text>
-        Welcome To Fundoo
-      </text> */}
-      <Login/>
+      <BrowserRouter>
+        <Switch>
+          <Route path={"/"} exact component={Login} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
