@@ -5,11 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import "../css/Login.css";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import InputAdornment from "@material-ui/core/InputAdornment";
 
 const styles = (theme) => ({
   textField: {
@@ -78,23 +78,24 @@ class PasswordTextFields extends React.Component {
             type={this.state.showPassword ? "text" : "password"}
             variant="outlined"
             margin="normal"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton
+                    className={classes.iconButton}
+                    onClick={this.showPassword}
+                  >
+                    {this.state.showPassword ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
             onChange={this.props.handleChange}
           />
-          <InputAdornment
-            position="end"
-            style={{ marginTop: "-18%", marginLeft: "83%" }}
-          >
-            <IconButton
-              className={classes.iconButton}
-              onClick={this.showPassword}
-            >
-              {this.state.showPassword ? (
-                <VisibilityOffIcon />
-              ) : (
-                <VisibilityIcon />
-              )}
-            </IconButton>
-          </InputAdornment>
         </Grid>
         <Grid
           container

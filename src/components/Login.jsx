@@ -5,7 +5,7 @@ import EnterPassword from "./EnterPassword";
 import Grid from "@material-ui/core/Grid";
 import { verifyEmail, loginUser } from "../service/Login";
 import "../css/Login.css";
-import Styles from "../css/snackbar.module.css"
+import Styles from "../css/snackbar.module.css";
 
 const styles = (theme) => ({
   container: {
@@ -22,8 +22,8 @@ class LoginForm extends React.Component {
     email: "",
     password: "",
     currentInput: "email",
-    status : "",
-    isActive: false
+    status: "",
+    isActive: false,
   };
 
   handleChange = (event) => {
@@ -51,18 +51,20 @@ class LoginForm extends React.Component {
   };
 
   login = () => {
-    loginUser(this.state.email, this.state.password).then((res) => {
-      this.snackBarMessage("Login Successful")
-    }).catch(err => {
-      this.snackBarMessage("Enter valid password");
-     });
+    loginUser(this.state.email, this.state.password)
+      .then((res) => {
+        this.snackBarMessage("Login Successful");
+      })
+      .catch((err) => {
+        this.snackBarMessage("Enter valid password");
+      });
   };
 
   snackBarMessage = async (message) => {
-    await this.setState({ status : message})
+    await this.setState({ status: message });
     this.openSnackBar();
     // this.setState({ status : "" })
-  }
+  };
 
   openSnackBar = () => {
     this.setState({ isActive: true }, () => {
@@ -70,6 +72,12 @@ class LoginForm extends React.Component {
         this.setState({ isActive: false });
       }, 5000);
     });
+  };
+
+  createAccount = () => {
+    this.props.history.push({
+      pathname:"/register"
+    })
   };
 
   render() {
@@ -89,6 +97,7 @@ class LoginForm extends React.Component {
               <EnterEmail
                 handleChange={this.handleChange}
                 handleButtonClick={this.handleButtonClick}
+                createAccount={this.createAccount}
               />
             ) : (
               <EnterPassword

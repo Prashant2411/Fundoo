@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import "../css/Login.css";
+import "../css/EnterEmail.css";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
@@ -87,7 +87,7 @@ class EmailTextField extends React.Component {
             className={classes.forgetEmail}
             gutterBottom
           >
-            <b>Create Account</b>
+            <b onClick={this.props.createAccount} className="createAccount">Create Account</b>
           </Typography>
           <Button
             variant="contained"
