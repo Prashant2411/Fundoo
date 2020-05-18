@@ -63,7 +63,6 @@ class LoginForm extends React.Component {
   snackBarMessage = async (message) => {
     await this.setState({ status: message });
     this.openSnackBar();
-    // this.setState({ status : "" })
   };
 
   openSnackBar = () => {

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import "../css/SignUp.css";
@@ -11,6 +11,7 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import regex from "../json/Regex.json";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/ErrorOutlineSharp";
+import { isEmailAvailable, registerUser } from "../service/SignUp";
 
 const styles = (theme) => ({
   container: {
@@ -61,11 +62,43 @@ class SignUp extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  checkEmailAvailablitiy = async (event) => {
+    const e = event.target;
+    const emailRegex = new RegExp("^" + regex.email + "$");
+    if (emailRegex.test(e.value)) {
+      await isEmailAvailable(e.value).then((res) => {
+        console.log("<----------> " + res.data);
+        res.data
+          ? this.setState({ emailValid: "YES", email: e.value })
+          : this.setState({
+              emailValid: "NO",
+              email: e.value,
+              status: "Account already exist",
+            });
+      });
+    }
+  };
+
+  signup = () => {
+    registerUser(
+      this.state.firstName,
+      this.state.lastName,
+      this.state.email,
+      this.state.password,
+      this.state.mobileNumber,
+      this.state.age
+    ).then(res => {
+      console.log("<------------> " + res.data);
+    }).catch(err => {
+      console.log("<Error> " + err.data);
+    });
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
-      <form className={classes.container}>
+      <form className={classes.container} onSubmit={this.signup}>
         <Grid
           container
           direction="column"
@@ -141,7 +174,7 @@ class SignUp extends React.Component {
                   ),
                 }}
                 variant="outlined"
-                onChange={this.handleChange}
+                onChange={this.checkEmailAvailablitiy}
                 required
               />
             </Grid>
@@ -231,15 +264,17 @@ class SignUp extends React.Component {
               />
             </Grid>
           </Grid>
-          <Button
-            variant="contained"
-            color="primary"
-            name="currentInput"
-            type="submit"
-            className={classes.button}
-          >
-            SIGN IN
-          </Button>
+          {this.state.emailValid === "YES" ? (
+            <Button
+              variant="contained"
+              color="primary"
+              name="currentInput"
+              type="submit"
+              className={classes.button}
+            >
+              SIGN IN
+            </Button>
+          ) : null}
         </Grid>
       </form>
     );
