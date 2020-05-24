@@ -32,7 +32,7 @@ class ForgetEmail extends React.Component {
 
   handleChange = async (event) =>
     await this.setState({ [event.target.name]: event.target.value });
-
+    
   getEmailId = async () => {
     const regexMobileNumber = new RegExp("^" + regex["mobileNumber"] + "$");
     if (regexMobileNumber.test(this.state.mobileNumber)) {
@@ -44,7 +44,7 @@ class ForgetEmail extends React.Component {
         });
       });
     } else {
-      this.setState({receivedEmail: true})
+      this.setState({ receivedEmail: true });
     }
   };
 
@@ -64,7 +64,7 @@ class ForgetEmail extends React.Component {
           </b>
           <Grid item xs={12} sm={6}>
             <TextField
-              error = {this.state.receivedEmail}
+              error={this.state.receivedEmail}
               label="Mobile Number"
               name="mobileNumber"
               onChange={this.handleChange}

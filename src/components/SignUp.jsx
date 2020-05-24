@@ -79,6 +79,12 @@ class SignUp extends React.Component {
     }
   };
 
+  login = () => {
+    this.props.history.push({
+      pathname: "/",
+    });
+  };
+
   signup = () => {
     registerUser(
       this.state.firstName,
@@ -87,9 +93,9 @@ class SignUp extends React.Component {
       this.state.password,
       this.state.mobileNumber,
       this.state.age
-    ).then(res => {
-    }).catch(err => {
-    });
+    )
+      .then((res) => {})
+      .catch((err) => {});
   };
 
   render() {
@@ -166,7 +172,7 @@ class SignUp extends React.Component {
                       {this.state.emailValid === "YES" ? (
                         <DoneIcon className={classes.doneIcon} />
                       ) : this.state.emailValid === "NO" ? (
-                        <ClearIcon className={classes.notDoneIcon} />
+                          <ClearIcon className={classes.notDoneIcon} />
                       ) : null}
                     </React.Fragment>
                   ),
@@ -262,17 +268,31 @@ class SignUp extends React.Component {
               />
             </Grid>
           </Grid>
-          {this.state.emailValid === "YES" ? (
+          <Grid
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="flex-end"
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              name="currentInput"
+              onClick={this.login}
+            >
+              LOG IN
+            </Button>
             <Button
               variant="contained"
               color="primary"
               name="currentInput"
               type="submit"
               className={classes.button}
+              disabled={this.state.emailValid === "YES" ? false : true}
             >
               SIGN IN
             </Button>
-          ) : null}
+          </Grid>
         </Grid>
       </form>
     );
