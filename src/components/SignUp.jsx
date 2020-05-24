@@ -88,9 +88,7 @@ class SignUp extends React.Component {
       this.state.mobileNumber,
       this.state.age
     ).then(res => {
-      console.log("<------------> " + res.data);
     }).catch(err => {
-      console.log("<Error> " + err.data);
     });
   };
 
@@ -229,7 +227,6 @@ class SignUp extends React.Component {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                error={this.state.mobileNumberE}
                 label="Mobile Number"
                 name="mobileNumber"
                 onChange={this.handleChange}
@@ -242,6 +239,7 @@ class SignUp extends React.Component {
                   title: "Enter valid phone number",
                 }}
                 variant="outlined"
+                required
               />
             </Grid>
             <Grid item xs={12} sm={6}>

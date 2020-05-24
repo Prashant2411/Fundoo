@@ -79,6 +79,12 @@ class LoginForm extends React.Component {
     })
   };
 
+  forgotEmail = () => {
+    this.props.history.push({
+      pathname:"/forgot-email"
+    })
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -97,6 +103,7 @@ class LoginForm extends React.Component {
                 handleChange={this.handleChange}
                 handleButtonClick={this.handleButtonClick}
                 createAccount={this.createAccount}
+                forgotEmail={this.forgotEmail}
               />
             ) : (
               <EnterPassword

@@ -17,3 +17,10 @@ export function loginUser(email, password) {
     }
   });
 }
+
+export function forgotEmail(mobileNumber) {
+  return axios({
+    method: "get",
+    url: "http://192.168.0.104:8080/user/forgot-email/" + mobileNumber,
+  });
+}

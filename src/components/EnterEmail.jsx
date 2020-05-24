@@ -17,6 +17,7 @@ const styles = (theme) => ({
   },
   forgetEmail: {
     paddingLeft: "5%",
+    cursor: "pointer",
   },
   signin: {
     marginTop: 0,
@@ -72,7 +73,7 @@ class EmailTextField extends React.Component {
             className={classes.forgetEmail}
             gutterBottom
           >
-            <b>Forget email?</b>
+            <b onClick={this.props.forgotEmail}>Forget email?</b>
           </Typography>
         </Grid>
         <Grid
@@ -87,7 +88,7 @@ class EmailTextField extends React.Component {
             className={classes.forgetEmail}
             gutterBottom
           >
-            <b onClick={this.props.createAccount} className="createAccount">Create Account</b>
+            <b onClick={this.props.createAccount}>Create Account</b>
           </Typography>
           <Button
             variant="contained"
