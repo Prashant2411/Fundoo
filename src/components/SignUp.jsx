@@ -12,6 +12,7 @@ import regex from "../json/Regex.json";
 import DoneIcon from "@material-ui/icons/Done";
 import ClearIcon from "@material-ui/icons/ErrorOutlineSharp";
 import { isEmailAvailable, registerUser } from "../service/SignUp";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const styles = (theme) => ({
   container: {
@@ -172,7 +173,9 @@ class SignUp extends React.Component {
                       {this.state.emailValid === "YES" ? (
                         <DoneIcon className={classes.doneIcon} />
                       ) : this.state.emailValid === "NO" ? (
+                        <Tooltip title="Email Already Exist">
                           <ClearIcon className={classes.notDoneIcon} />
+                        </Tooltip>
                       ) : null}
                     </React.Fragment>
                   ),
